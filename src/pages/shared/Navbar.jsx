@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import logo from '../../assets/logo.png'
-import { div } from 'motion/react-client';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -10,9 +9,9 @@ const Navbar = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                console.log('Logout Successfully', result)
+                console.log('Logout Successfully')
             })
-            .then(error => {
+            .catch(error => {
                 console.log(error)
             })
     }

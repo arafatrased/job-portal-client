@@ -3,12 +3,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import loginLottieData from '../../assets/lottie/login.json'
 import { AuthContext } from '../../provider/AuthProvider';
+import axios from 'axios';
 
 const Login = () => {
     const {loginUser} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
-    console.log('in signIn page', location)
+    // console.log('in signIn page', location)
     const from = location.state || '/';
     const handleLogin = (e) =>{
         e.preventDefault();
@@ -18,6 +19,16 @@ const Login = () => {
         loginUser(email, password)
         .then(result =>{
             const user = result.user;
+
+            // axios.post('http://localhost:5000/jwt', user, {
+            //     withCredentials: true // if get cookie? allow it.
+            // })
+            // .then(res =>{
+            //     console.log(res.data)
+            // })
+
+
+
             if(user){
                 navigate(from);
             } 
